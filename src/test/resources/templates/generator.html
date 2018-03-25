@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org"
+      xmlns:sec="http://www.thymeleaf.org/thymeleaf-extras-springsecurity3">
+<head>
+    <meta charset="utf-8"></meta>
+    <title>代码生成</title>
+    <meta name="renderer" content="webkit"></meta>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1"></meta>
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"></meta>
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/bootstrap/3.3.0/css/bootstrap-theme.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/select2/4.0.6-rc.1/css/select2.min.css" rel="stylesheet">
+    <link href="https://cdn.bootcss.com/select2-bootstrap-css/1.4.6/select2-bootstrap.min.css" rel="stylesheet">
+    <style>
+        html, body {
+            width: 100%;
+            height: 100%;
+            margin: 0;
+        }
+        .content {
+            position: absolute;
+            width: 800px;
+            height: 750px;
+            top: 50%;
+            left: 50%;
+            margin: -375px 0 0 -400px;
+            border-radius: 4px;
+            box-sizing: border-box;
+            z-index: 100;
+        }
+        .form {
+            margin: 0px auto;
+            width: 800px;
+        }
+        .select2-container .select2-selection--single {
+            height: 34px;
+        }
+        .page-header {
+            text-align: center;
+            color: #1d80ef ;
+            border-bottom: 1px solid #1d80ef;
+            margin: 0 0 20px;
+        }
+        .form-group > label {
+            color: #5F5F5F;
+        }
+        .button-group {
+            text-align: center;
+        }
+        .button-group > button {
+            width: 150px;
+            color: #fff;
+            background-color: #1d80ef;
+            display: inline-block;
+            padding: 6px 12px;
+            margin-bottom: 0;
+            font-size: 14px;
+            font-weight: 400;
+            line-height: 1.42857143;
+            text-align: center;
+            border: 0;
+            -webkit-border-radius: 4px;
+            -moz-border-radius: 4px;
+            border-radius: 4px;
+            white-space: nowrap;
+        }
+    </style>
+</head>
+<body>
+<div class="content">
+    <form role="form" class="form">
+        <div class="page-header">
+            <h1>
+                代码生成
+            </h1>
+        </div>
+        <div class="form-group">
+            <div class="form-group col-sm-6">
+                <label class="control-label">作者</label>
+                <div class="">
+                    <input class="form-control" id="author" type="text" th:field="${package.author}"></input>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label">创建日期</label>
+                <div class="">
+                    <input class="form-control" id="date" type="text" th:field="${package.date}"></input>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group col-sm-6">
+                <label class=" control-label">项目根路径</label>
+                <div class="">
+                    <input class="form-control" id="projectPath" type="text" th:field="${package.projectPath}"></input>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label class=" control-label">java文件存放路径</label>
+                <div class="">
+                    <input class="form-control" id="javaPath" type="text" th:field="${package.javaPath}"></input>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group col-sm-6">
+                <label class=" control-label">配置文件存放路径</label>
+                <div class="">
+                    <input class="form-control" id="resourcesPath" type="text" th:field="${package.resourcesPath}"></input>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label class=" control-label">mapper文件存放路径</label>
+                <div class="">
+                    <input class="form-control" id="mapperDictionary" type="text" th:field="${package.mapperDictionary}"></input>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group col-sm-6">
+                <label class=" control-label">包名前缀</label>
+                <div class="">
+                    <input class="form-control" id="basePackage" type="text" th:field="${package.basePackage}"></input>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label class=" control-label">DO包名</label>
+                <div class="">
+                    <input class="form-control" id="doPackage" type="text" th:field="${package.doPackage}"></input>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group col-sm-6">
+                <label class=" control-label">DTO包名</label>
+                <div class="">
+                    <input class="form-control" id="dtoPackage" type="text" th:field="${package.dtoPackage}"></input>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label class=" control-label">QO包名</label>
+                <div class="">
+                    <input class="form-control" id="qoPackage" type="text" th:field="${package.qoPackage}"></input>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group col-sm-6">
+                <label class=" control-label">dao层包名</label>
+                <div class="">
+                    <input class="form-control" id="daoPackage" type="text" th:field="${package.daoPackage}"></input>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label class=" control-label">service层包名</label>
+                <div class="">
+                    <input class="form-control" id="servicePackage" type="text" th:field="${package.servicePackage}"></input>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group col-sm-6">
+                <label class=" control-label">controller层包名</label>
+                <div class="">
+                    <input class="form-control" id="controllerPackage" type="text" th:field="${package.controllerPackage}"></input>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label class=" control-label">数据库</label>
+                <div class="-10">
+                    <select class="form-control" id="databases" onchange="getTables()">
+                    </select>
+                </div>
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="form-group col-sm-6">
+                <label class=" control-label">数据库表</label>
+                <div class="">
+                    <select class="form-control input-sm" id="tables" onchange="tableChange()">
+                    </select>
+                </div>
+            </div>
+            <div class="form-group col-sm-6">
+                <label class="control-label">类文件前缀</label>
+                <div class="">
+                    <input class="form-control" id="doNameUpperCamel" type="text"></input>
+                </div>
+            </div>
+        </div>
+        <div class="form-group col-sm-12">
+            <div class="button-group">
+                <button type="button" id="generatorBtn" onclick="generate()">生成代码</button>
+            </div>
+        </div>
+    </form>
+</div>
+<div id="particles-js"></div>
+<script src="https://cdn.bootcss.com/jquery/3.3.1/jquery.js"></script>
+<script src="https://cdn.bootcss.com/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+<script src="https://cdn.bootcss.com/select2/4.0.6-rc.1/js/select2.min.js"></script>
+<script src="https://cdn.bootcss.com/particles.js/2.0.0/particles.min.js"></script>
+<script>
+    var cm = {}, tables = [];
+    cm.get = function (url, data, success) {
+        cm.ajax(url, "get", data, success);
+    };
+    cm.post = function (url, data, success) {
+        cm.ajax(url, "post", data, success);
+    };
+    cm.jpost = function (url, data, success) {
+        cm.ajax(url, "post", JSON.stringify(data), success, true, {'Content-type': 'application/json;charset=UTF-8'});
+    };
+    cm.ajax = function (url, type, data, success, show, headers) {
+        $.ajax({
+            url: url,
+            data: data,
+            type: type,
+            dataType: "json",
+            headers: headers,
+            beforeSend: function () {
+            },
+            success: function (data) {
+                success(data);
+            },
+            error: function (error) {
+            }
+        });
+    };
+    $(document).ready(function () {
+        cm.get("/getDatabases", {}, function (data) {
+            $('#databases').select2({
+                data: data
+            });
+            if (data.length > 0){
+                getTables();
+            }
+        });
+        particlesJS.load('particles-js', '/json/particle.json', function() {
+            console.log('callback - particles.js config loaded');
+        });
+    });
+    var getTables = function () {
+        $("#tables > option").remove();
+        $("#doNameUpperCamel").val("");
+        var database = $("#databases option:selected").text();
+        if(tables[database]){
+            $('#tables').select2({
+                data: tables[database]
+            });
+            if(tables[database].length > 0){
+                tableChange();
+            }
+        } else {
+            cm.get("/getTables", {schemaName: database}, function (data) {
+                for (var i = 0; i<data.length; i++){
+                    data[i].id = data[i].tableComment;
+                    data[i].text = data[i].tableName;
+                }
+                $('#tables').select2({
+                    data: data
+                });
+                tables[database] = data;
+                if(data.length > 0){
+                    tableChange();
+                }
+            });
+        }
+    };
+    var tableChange = function () {
+        var tableName = $("#tables option:selected").text();
+        var arr = tableName.split("_");
+        for (var i = 0; i < arr.length; i++){
+            arr[i] = arr[i][0].toUpperCase() + arr[i].substring(1, arr[i].length);
+        }
+        tableName = arr.join("");
+        $("#doNameUpperCamel").val(tableName);
+    };
+    var generate = function () {
+        cm.jpost("/generate", {
+            author: $("#author").val(),
+            date: $("#date").val(),
+            projectPath: $("#projectPath").val(),
+            javaPath: $("#javaPath").val(),
+            resourcesPath: $("#resourcesPath").val(),
+            mapperDictionary: $("#mapperDictionary").val(),
+            basePackage: $("#basePackage").val(),
+            doPackage: $("#doPackage").val(),
+            dtoPackage: $("#dtoPackage").val(),
+            qoPackage: $("#qoPackage").val(),
+            daoPackage: $("#daoPackage").val(),
+            servicePackage: $("#servicePackage").val(),
+            controllerPackage: $("#controllerPackage").val(),
+            schemaName: $("#databases option:selected").text(),
+            tableName:$("#tables option:selected").text(),
+            tableComment:$("#tables option:selected").val().replace("表", ""),
+            doNameUpperCamel: $("#doNameUpperCamel").val()
+        }, function (data) {
+            if(data.code == 200){
+                showPopover($('#generatorBtn'), "生成成功")
+            } else {
+                showPopover($('#generatorBtn'), "生成失败")
+            }
+
+        });
+        function showPopover(target, msg) {
+            target.attr("data-original-title", msg);
+            target.tooltip();
+            target.tooltip('show');
+            target.focus();
+            //3秒后消失提示框
+            var id = setTimeout(
+                function () {
+                    target.attr("data-original-title", "");
+                    target.tooltip('hide');
+                }, 3000
+            );
+        }
+    };
+</script>
+</body>
+</html>

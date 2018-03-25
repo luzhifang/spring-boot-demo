@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<mapper namespace="com.company.dao.GeneratorMapper">
+    <!--查询可用数据库-->
+    <select id="getDatabases" resultType="java.lang.String">
+        <choose>
+            <when test="databaseType=='sqlserver'">
+                SELECT Name FROM SysDatabases ORDER BY Name
+            </when>
+            <when test="databaseType=='oralce'">
+                SELECT DISTINCT TABLE_SCHEMA FROM information_schema.TABLES
+            </when>
+            <otherwise>
+                SELECT DISTINCT TABLE_SCHEMA FROM information_schema.TABLES
+            </otherwise>
+        </choose>
+    </select>
+
+    <!--查询数据库下面的表-->
+    <select id="getTables" resultType="com.company.domain.Table">
+        <choose>
+            <when test="databaseType=='sqlserver'">
+                SELECT
+                    convert(varchar(100), tb.name) tableName,
+                    convert(varchar(100),property.value) tableComment
+                FROM ${schemaName}.dbo.sysobjects tb
+                LEFT JOIN sys.extended_properties property on tb.id=property.major_id
+                WHERE   tb.type= 'U'
+                ORDER BY tb.name
+            </when>
+            <when test="databaseType=='oralce'">
+                SELECT DISTINCT TABLE_SCHEMA FROM information_schema.TABLES
+            </when>
+            <otherwise>
+                SELECT TABLE_NAME tableName, TABLE_COMMENT tableComment  FROM information_schema.TABLES WHERE TABLE_SCHEMA = #{schemaName}
+            </otherwise>
+        </choose>
+    </select>
+
+    <!--查询数据库表下面的列属性-->
+    <select id="getColumns" resultType="com.company.domain.Column">
+        <choose>
+            <when test="databaseType=='sqlserver'">
+                SELECT
+                    convert(varchar(100), b.name) AS columnName,
+                    convert(varchar(100), d.name) AS columnType,
+                    convert(varchar(100), c.value) AS columnComment
+                FROM sys.tables a
+                INNER JOIN sys.columns b ON b.object_id = a.object_id
+                INNER JOIN sys.types d ON d.user_type_id = b.user_type_id
+                LEFT JOIN sys.extended_properties c ON c.major_id = b.object_id AND c.minor_id = b.column_id
+                WHERE
+                    a.name=#{tableName}
+            </when>
+            <when test="databaseType=='oralce'">
+                SELECT DISTINCT TABLE_SCHEMA FROM information_schema.TABLES
+            </when>
+            <otherwise>
+                SELECT
+                COLUMN_NAME columnName,
+                DATA_TYPE columnType,
+                COLUMN_COMMENT columnComment,
+                COLUMN_NAME columnName
+                FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = #{schemaName} AND TABLE_NAME = #{tableName}
+            </otherwise>
+        </choose>
+    </select>
+
+</mapper>

@@ -28,7 +28,7 @@ public class CodeGenerateUtils {
         data.put("hasDate", false);
         data.put("hasBigDecimal", false);
         for (Column c: columns) {
-            c.setDoField(CodeGenerateUtils.toHump(c.getColumnName()));
+            c.setDoField(CodeGenerateUtils.toHump(c.getColumnName().toLowerCase()));
             if (c.getColumnType().equals("date") || c.getColumnType().equals("datetime") || c.getColumnType().equals("timestamp")){
                 data.put("hasDate", true);
             }
@@ -47,7 +47,6 @@ public class CodeGenerateUtils {
         final String templateName = "dto.ftl";
         File mapperFile = new File(path);
         JSONObject data = (JSONObject) JSONObject.toJSON(gp);
-        data.put("columns",columns);
         generateFileByTemplate(templateName,mapperFile,data);
     }
 
@@ -59,7 +58,7 @@ public class CodeGenerateUtils {
         File mapperFile = new File(path);
         JSONObject data = (JSONObject) JSONObject.toJSON(gp);
         for (Column c: columns) {
-            c.setDoField(CodeGenerateUtils.toHump(c.getColumnName()));
+            c.setDoField(CodeGenerateUtils.toHump(c.getColumnName().toLowerCase()));
         }
         data.put("columns",columns);
         generateFileByTemplate(templateName,mapperFile,data);
@@ -104,7 +103,7 @@ public class CodeGenerateUtils {
         File mapperFile = new File(path);
         JSONObject data = (JSONObject) JSONObject.toJSON(gp);
         for (Column c: columns) {
-            c.setDoField(CodeGenerateUtils.toHump(c.getColumnName()));
+            c.setDoField(CodeGenerateUtils.toHump(c.getColumnName().toLowerCase()));
         }
         data.put("columns",columns);
         generateFileByTemplate(templateName,mapperFile,data);

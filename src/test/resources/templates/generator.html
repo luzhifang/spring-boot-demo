@@ -268,7 +268,7 @@
         }
     };
     var tableChange = function () {
-        var tableName = $("#tables option:selected").text();
+        var tableName = $("#tables option:selected").text().toLowerCase();
         var arr = tableName.split("_");
         for (var i = 0; i < arr.length; i++){
             arr[i] = arr[i][0].toUpperCase() + arr[i].substring(1, arr[i].length);

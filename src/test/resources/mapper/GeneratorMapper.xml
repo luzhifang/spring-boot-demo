@@ -29,8 +29,14 @@
                 ORDER BY tb.name
             </when>
             <when test="databaseType=='oracle'">
-             select a.TABLE_NAME as tableName,b.comments as tableComment from dba_tables  a ,user_tab_comments b where a.table_name = b.table_name 
-      and a.tablespace_name = #{schemaName}
+                SELECT
+                    a.TABLE_NAME as tableName,
+                    b.comments as tableComment
+                FROM
+                    dba_tables  a ,user_tab_comments b
+                WHERE
+                    a.table_name = b.table_name
+                    AND a.tablespace_name = #{schemaName}
             </when>
             <otherwise>
                 SELECT TABLE_NAME tableName, TABLE_COMMENT tableComment  FROM information_schema.TABLES WHERE TABLE_SCHEMA = #{schemaName}
@@ -66,11 +72,12 @@
             </when>
             <otherwise>
                 SELECT
-                COLUMN_NAME columnName,
-                DATA_TYPE columnType,
-                COLUMN_COMMENT columnComment,
-                COLUMN_NAME columnName
-                FROM information_schema.COLUMNS WHERE TABLE_SCHEMA = #{schemaName} AND TABLE_NAME = #{tableName}
+                    COLUMN_NAME columnName,
+                    DATA_TYPE columnType,
+                    COLUMN_COMMENT columnComment,
+                    COLUMN_NAME columnName
+                FROM information_schema.COLUMNS
+                WHERE TABLE_SCHEMA = #{schemaName} AND TABLE_NAME = #{tableName}
             </otherwise>
         </choose>
     </select>

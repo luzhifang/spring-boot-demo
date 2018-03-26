@@ -23,11 +23,6 @@
     </parent>
 
     <dependencies>
-   		 <dependency>
-			<groupId>oracle</groupId>
-			<artifactId>ojdbc14</artifactId>
-			<version>1.4</version>
-		</dependency>
         <!--Spring Boot依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -89,7 +84,11 @@
             <!--<version>4.0</version>-->
         <!--</dependency>-->
         <!--Oracle 驱动-->
-        <!--TODO-->
+        <!--<dependency>-->
+            <!--<groupId>oracle</groupId>-->
+            <!--<artifactId>ojdbc</artifactId>-->
+            <!--<version>1.4</version>-->
+        <!--</dependency>-->
         <!--MyBatis 及 插件依赖-->
         <dependency>
             <groupId>org.mybatis</groupId>

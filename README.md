@@ -14,7 +14,7 @@ Spring Boot Demo 是一个基于Spring Boot & MyBatis的种子项目，用于快
 - 提供代码生成器根据表名生成对应的Domain(领域对象)、Mapper、MapperXML、Service、Controller等基础代码
 - 没有集成mybatis generator，全部使用freemarker模板生成，模板随便改
 - 代码生成提供Mysql、Sqlserver、Oracle三种数据库支持
-- 提供了简易的代码生成配置页面，随意改报名、路径
+- 提供了简易的代码生成配置页面，随意改包名、路径
 
 ## 快速上手
 1. 克隆项目

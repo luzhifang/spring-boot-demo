@@ -23,10 +23,16 @@
     </parent>
 
     <dependencies>
+   		 <dependency>
+			<groupId>oracle</groupId>
+			<artifactId>ojdbc14</artifactId>
+			<version>1.4</version>
+		</dependency>
         <!--Spring Boot依赖-->
         <dependency>
             <groupId>org.springframework.boot</groupId>
             <artifactId>spring-boot-starter-web</artifactId>
+            
         </dependency>
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -39,6 +45,7 @@
             <version>1.9.22</version>
             <scope>test</scope>
         </dependency>
+        
         <!--打war包需要-->
         <!--<dependency>
             <groupId>org.springframework.boot</groupId>

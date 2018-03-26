@@ -7,8 +7,8 @@
             <when test="databaseType=='sqlserver'">
                 SELECT Name FROM SysDatabases ORDER BY Name
             </when>
-            <when test="databaseType=='oralce'">
-                SELECT DISTINCT TABLE_SCHEMA FROM information_schema.TABLES
+            <when test="databaseType=='oracle'">
+              	SELECT tablespace_name   FROM dba_tablespaces
             </when>
             <otherwise>
                 SELECT DISTINCT TABLE_SCHEMA FROM information_schema.TABLES
@@ -28,8 +28,9 @@
                 WHERE   tb.type= 'U'
                 ORDER BY tb.name
             </when>
-            <when test="databaseType=='oralce'">
-                SELECT DISTINCT TABLE_SCHEMA FROM information_schema.TABLES
+            <when test="databaseType=='oracle'">
+             select a.TABLE_NAME as tableName,b.comments as tableComment from dba_tables  a ,user_tab_comments b where a.table_name = b.table_name 
+      and a.tablespace_name = #{schemaName}
             </when>
             <otherwise>
                 SELECT TABLE_NAME tableName, TABLE_COMMENT tableComment  FROM information_schema.TABLES WHERE TABLE_SCHEMA = #{schemaName}
@@ -52,8 +53,16 @@
                 WHERE
                     a.name=#{tableName}
             </when>
-            <when test="databaseType=='oralce'">
-                SELECT DISTINCT TABLE_SCHEMA FROM information_schema.TABLES
+            <when test="databaseType=='oracle'">
+                SELECT 
+                  	b.column_name columnName,
+                  	b.data_type columnType,               
+			      	a.comments columnComment       
+				FROM 
+					user_col_comments a,all_tab_columns b 
+				WHERE 
+					a.table_name = b.table_name and
+			      	a.table_name = #{tableName} 
             </when>
             <otherwise>
                 SELECT
@@ -65,5 +74,5 @@
             </otherwise>
         </choose>
     </select>
-
+ 	
 </mapper>

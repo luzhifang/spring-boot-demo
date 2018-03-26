@@ -1,13 +1,7 @@
 package com.company.controller;
 
-import com.company.project.core.ResultGenerator;
-import com.company.properties.DatasourceProperties;
-import com.company.properties.GeneratorProperties;
-import com.company.domain.Column;
-import com.company.project.core.Result;
-import com.company.domain.Table;
-import com.company.service.GeneratorService;
-import com.company.utils.CodeGenerateUtils;
+import java.util.List;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -16,8 +10,14 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import java.io.IOException;
-import java.util.List;
+import com.company.domain.Column;
+import com.company.domain.Table;
+import com.company.project.core.Result;
+import com.company.project.core.ResultGenerator;
+import com.company.properties.DatasourceProperties;
+import com.company.properties.GeneratorProperties;
+import com.company.service.GeneratorService;
+import com.company.utils.CodeGenerateUtils;
 
 @Controller
 public class GeneratorController {

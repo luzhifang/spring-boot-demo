@@ -1,0 +1,781 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.company.project.generator.dao.TDCREDITRESULTDao">
+
+    <sql id="tDCREDITRESULTColumns">
+            a.ID iD,
+            a.ID iD,
+            a.ID iD,
+            a.ID iD,
+            a.ID iD,
+            a.ID iD,
+            a.ID iD,
+            a.ID iD,
+            a.ID iD,
+            a.ID iD,
+            a.ID iD,
+            a.ID_CARD iDCARD,
+            a.ID_CARD iDCARD,
+            a.ID_CARD iDCARD,
+            a.ID_CARD iDCARD,
+            a.ID_CARD iDCARD,
+            a.ID_CARD iDCARD,
+            a.ID_CARD iDCARD,
+            a.ID_CARD iDCARD,
+            a.ID_CARD iDCARD,
+            a.ID_CARD iDCARD,
+            a.ID_CARD iDCARD,
+            a.SERIAL_ID sERIALID,
+            a.SERIAL_ID sERIALID,
+            a.SERIAL_ID sERIALID,
+            a.SERIAL_ID sERIALID,
+            a.SERIAL_ID sERIALID,
+            a.SERIAL_ID sERIALID,
+            a.SERIAL_ID sERIALID,
+            a.SERIAL_ID sERIALID,
+            a.SERIAL_ID sERIALID,
+            a.SERIAL_ID sERIALID,
+            a.SERIAL_ID sERIALID,
+            a.SUCCESS sUCCESS,
+            a.SUCCESS sUCCESS,
+            a.SUCCESS sUCCESS,
+            a.SUCCESS sUCCESS,
+            a.SUCCESS sUCCESS,
+            a.SUCCESS sUCCESS,
+            a.SUCCESS sUCCESS,
+            a.SUCCESS sUCCESS,
+            a.SUCCESS sUCCESS,
+            a.SUCCESS sUCCESS,
+            a.SUCCESS sUCCESS,
+            a.REASON_CODE rEASONCODE,
+            a.REASON_CODE rEASONCODE,
+            a.REASON_CODE rEASONCODE,
+            a.REASON_CODE rEASONCODE,
+            a.REASON_CODE rEASONCODE,
+            a.REASON_CODE rEASONCODE,
+            a.REASON_CODE rEASONCODE,
+            a.REASON_CODE rEASONCODE,
+            a.REASON_CODE rEASONCODE,
+            a.REASON_CODE rEASONCODE,
+            a.REASON_CODE rEASONCODE,
+            a.REASON_DESC rEASONDESC,
+            a.REASON_DESC rEASONDESC,
+            a.REASON_DESC rEASONDESC,
+            a.REASON_DESC rEASONDESC,
+            a.REASON_DESC rEASONDESC,
+            a.REASON_DESC rEASONDESC,
+            a.REASON_DESC rEASONDESC,
+            a.REASON_DESC rEASONDESC,
+            a.REASON_DESC rEASONDESC,
+            a.REASON_DESC rEASONDESC,
+            a.REASON_DESC rEASONDESC,
+            a.SCORE sCORE,
+            a.SCORE sCORE,
+            a.SCORE sCORE,
+            a.SCORE sCORE,
+            a.SCORE sCORE,
+            a.SCORE sCORE,
+            a.SCORE sCORE,
+            a.SCORE sCORE,
+            a.SCORE sCORE,
+            a.SCORE sCORE,
+            a.SCORE sCORE,
+            a.DECISION dECISION,
+            a.DECISION dECISION,
+            a.DECISION dECISION,
+            a.DECISION dECISION,
+            a.DECISION dECISION,
+            a.DECISION dECISION,
+            a.DECISION dECISION,
+            a.DECISION dECISION,
+            a.DECISION dECISION,
+            a.DECISION dECISION,
+            a.DECISION dECISION,
+            a.CREATE_TIME cREATETIME,
+            a.CREATE_TIME cREATETIME,
+            a.CREATE_TIME cREATETIME,
+            a.CREATE_TIME cREATETIME,
+            a.CREATE_TIME cREATETIME,
+            a.CREATE_TIME cREATETIME,
+            a.CREATE_TIME cREATETIME,
+            a.CREATE_TIME cREATETIME,
+            a.CREATE_TIME cREATETIME,
+            a.CREATE_TIME cREATETIME,
+            a.CREATE_TIME cREATETIME,
+            a.ERROR_INFO eRRORINFO,
+            a.ERROR_INFO eRRORINFO,
+            a.ERROR_INFO eRRORINFO,
+            a.ERROR_INFO eRRORINFO,
+            a.ERROR_INFO eRRORINFO,
+            a.ERROR_INFO eRRORINFO,
+            a.ERROR_INFO eRRORINFO,
+            a.ERROR_INFO eRRORINFO,
+            a.ERROR_INFO eRRORINFO,
+            a.ERROR_INFO eRRORINFO,
+            a.ERROR_INFO eRRORINFO,
+            a.DATA dATA,
+            a.DATA dATA,
+            a.DATA dATA,
+            a.DATA dATA,
+            a.DATA dATA,
+            a.DATA dATA,
+            a.DATA dATA,
+            a.DATA dATA,
+            a.DATA dATA,
+            a.DATA dATA,
+            a.DATA dATA
+    </sql>
+
+    <sql id="tDCREDITRESULTJoins">
+
+    </sql>
+
+    <select id="getById" resultType="com.company.project.generator.domain.TDCREDITRESULT">
+        SELECT
+        <include refid="tDCREDITRESULTColumns"/>
+        FROM TD_CREDIT_RESULT a
+        <include refid="tDCREDITRESULTJoins"/>
+        WHERE a.id = #{id}
+    </select>
+
+    <select id="get" resultType="com.company.project.generator.domain.TDCREDITRESULT" parameterType="com.company.project.generator.domain.TDCREDITRESULT">
+        SELECT
+        <include refid="tDCREDITRESULTColumns"/>
+        FROM TD_CREDIT_RESULT a
+        <include refid="tDCREDITRESULTJoins"/>
+        <where>
+
+        </where>
+    </select>
+
+    <select id="findPage" resultType="com.company.project.generator.domain.TDCREDITRESULT">
+        SELECT
+        <include refid="tDCREDITRESULTColumns"/>
+        FROM TD_CREDIT_RESULT a
+        <include refid="tDCREDITRESULTJoins"/>
+        <where>
+
+        </where>
+    </select>
+
+    <insert id="insert" useGeneratedKeys="true" keyProperty="id">
+        INSERT INTO TD_CREDIT_RESULT (
+                ID,
+                ID,
+                ID,
+                ID,
+                ID,
+                ID,
+                ID,
+                ID,
+                ID,
+                ID,
+                ID,
+                ID_CARD,
+                ID_CARD,
+                ID_CARD,
+                ID_CARD,
+                ID_CARD,
+                ID_CARD,
+                ID_CARD,
+                ID_CARD,
+                ID_CARD,
+                ID_CARD,
+                ID_CARD,
+                SERIAL_ID,
+                SERIAL_ID,
+                SERIAL_ID,
+                SERIAL_ID,
+                SERIAL_ID,
+                SERIAL_ID,
+                SERIAL_ID,
+                SERIAL_ID,
+                SERIAL_ID,
+                SERIAL_ID,
+                SERIAL_ID,
+                SUCCESS,
+                SUCCESS,
+                SUCCESS,
+                SUCCESS,
+                SUCCESS,
+                SUCCESS,
+                SUCCESS,
+                SUCCESS,
+                SUCCESS,
+                SUCCESS,
+                SUCCESS,
+                REASON_CODE,
+                REASON_CODE,
+                REASON_CODE,
+                REASON_CODE,
+                REASON_CODE,
+                REASON_CODE,
+                REASON_CODE,
+                REASON_CODE,
+                REASON_CODE,
+                REASON_CODE,
+                REASON_CODE,
+                REASON_DESC,
+                REASON_DESC,
+                REASON_DESC,
+                REASON_DESC,
+                REASON_DESC,
+                REASON_DESC,
+                REASON_DESC,
+                REASON_DESC,
+                REASON_DESC,
+                REASON_DESC,
+                REASON_DESC,
+                SCORE,
+                SCORE,
+                SCORE,
+                SCORE,
+                SCORE,
+                SCORE,
+                SCORE,
+                SCORE,
+                SCORE,
+                SCORE,
+                SCORE,
+                DECISION,
+                DECISION,
+                DECISION,
+                DECISION,
+                DECISION,
+                DECISION,
+                DECISION,
+                DECISION,
+                DECISION,
+                DECISION,
+                DECISION,
+                CREATE_TIME,
+                CREATE_TIME,
+                CREATE_TIME,
+                CREATE_TIME,
+                CREATE_TIME,
+                CREATE_TIME,
+                CREATE_TIME,
+                CREATE_TIME,
+                CREATE_TIME,
+                CREATE_TIME,
+                CREATE_TIME,
+                ERROR_INFO,
+                ERROR_INFO,
+                ERROR_INFO,
+                ERROR_INFO,
+                ERROR_INFO,
+                ERROR_INFO,
+                ERROR_INFO,
+                ERROR_INFO,
+                ERROR_INFO,
+                ERROR_INFO,
+                ERROR_INFO,
+                DATA,
+                DATA,
+                DATA,
+                DATA,
+                DATA,
+                DATA,
+                DATA,
+                DATA,
+                DATA,
+                DATA,
+                DATA
+        ) VALUES (
+                #{iD},
+                #{iD},
+                #{iD},
+                #{iD},
+                #{iD},
+                #{iD},
+                #{iD},
+                #{iD},
+                #{iD},
+                #{iD},
+                #{iD},
+                #{iDCARD},
+                #{iDCARD},
+                #{iDCARD},
+                #{iDCARD},
+                #{iDCARD},
+                #{iDCARD},
+                #{iDCARD},
+                #{iDCARD},
+                #{iDCARD},
+                #{iDCARD},
+                #{iDCARD},
+                #{sERIALID},
+                #{sERIALID},
+                #{sERIALID},
+                #{sERIALID},
+                #{sERIALID},
+                #{sERIALID},
+                #{sERIALID},
+                #{sERIALID},
+                #{sERIALID},
+                #{sERIALID},
+                #{sERIALID},
+                #{sUCCESS},
+                #{sUCCESS},
+                #{sUCCESS},
+                #{sUCCESS},
+                #{sUCCESS},
+                #{sUCCESS},
+                #{sUCCESS},
+                #{sUCCESS},
+                #{sUCCESS},
+                #{sUCCESS},
+                #{sUCCESS},
+                #{rEASONCODE},
+                #{rEASONCODE},
+                #{rEASONCODE},
+                #{rEASONCODE},
+                #{rEASONCODE},
+                #{rEASONCODE},
+                #{rEASONCODE},
+                #{rEASONCODE},
+                #{rEASONCODE},
+                #{rEASONCODE},
+                #{rEASONCODE},
+                #{rEASONDESC},
+                #{rEASONDESC},
+                #{rEASONDESC},
+                #{rEASONDESC},
+                #{rEASONDESC},
+                #{rEASONDESC},
+                #{rEASONDESC},
+                #{rEASONDESC},
+                #{rEASONDESC},
+                #{rEASONDESC},
+                #{rEASONDESC},
+                #{sCORE},
+                #{sCORE},
+                #{sCORE},
+                #{sCORE},
+                #{sCORE},
+                #{sCORE},
+                #{sCORE},
+                #{sCORE},
+                #{sCORE},
+                #{sCORE},
+                #{sCORE},
+                #{dECISION},
+                #{dECISION},
+                #{dECISION},
+                #{dECISION},
+                #{dECISION},
+                #{dECISION},
+                #{dECISION},
+                #{dECISION},
+                #{dECISION},
+                #{dECISION},
+                #{dECISION},
+                #{cREATETIME},
+                #{cREATETIME},
+                #{cREATETIME},
+                #{cREATETIME},
+                #{cREATETIME},
+                #{cREATETIME},
+                #{cREATETIME},
+                #{cREATETIME},
+                #{cREATETIME},
+                #{cREATETIME},
+                #{cREATETIME},
+                #{eRRORINFO},
+                #{eRRORINFO},
+                #{eRRORINFO},
+                #{eRRORINFO},
+                #{eRRORINFO},
+                #{eRRORINFO},
+                #{eRRORINFO},
+                #{eRRORINFO},
+                #{eRRORINFO},
+                #{eRRORINFO},
+                #{eRRORINFO},
+                #{dATA},
+                #{dATA},
+                #{dATA},
+                #{dATA},
+                #{dATA},
+                #{dATA},
+                #{dATA},
+                #{dATA},
+                #{dATA},
+                #{dATA},
+                #{dATA}
+        )
+    </insert>
+
+    <update id="update">
+        UPDATE TD_CREDIT_RESULT SET
+            <if test="iD != null">
+                ID = #{iD},
+            </if>
+            <if test="iD != null">
+                ID = #{iD},
+            </if>
+            <if test="iD != null">
+                ID = #{iD},
+            </if>
+            <if test="iD != null">
+                ID = #{iD},
+            </if>
+            <if test="iD != null">
+                ID = #{iD},
+            </if>
+            <if test="iD != null">
+                ID = #{iD},
+            </if>
+            <if test="iD != null">
+                ID = #{iD},
+            </if>
+            <if test="iD != null">
+                ID = #{iD},
+            </if>
+            <if test="iD != null">
+                ID = #{iD},
+            </if>
+            <if test="iD != null">
+                ID = #{iD},
+            </if>
+            <if test="iD != null">
+                ID = #{iD},
+            </if>
+            <if test="iDCARD != null">
+                ID_CARD = #{iDCARD},
+            </if>
+            <if test="iDCARD != null">
+                ID_CARD = #{iDCARD},
+            </if>
+            <if test="iDCARD != null">
+                ID_CARD = #{iDCARD},
+            </if>
+            <if test="iDCARD != null">
+                ID_CARD = #{iDCARD},
+            </if>
+            <if test="iDCARD != null">
+                ID_CARD = #{iDCARD},
+            </if>
+            <if test="iDCARD != null">
+                ID_CARD = #{iDCARD},
+            </if>
+            <if test="iDCARD != null">
+                ID_CARD = #{iDCARD},
+            </if>
+            <if test="iDCARD != null">
+                ID_CARD = #{iDCARD},
+            </if>
+            <if test="iDCARD != null">
+                ID_CARD = #{iDCARD},
+            </if>
+            <if test="iDCARD != null">
+                ID_CARD = #{iDCARD},
+            </if>
+            <if test="iDCARD != null">
+                ID_CARD = #{iDCARD},
+            </if>
+            <if test="sERIALID != null">
+                SERIAL_ID = #{sERIALID},
+            </if>
+            <if test="sERIALID != null">
+                SERIAL_ID = #{sERIALID},
+            </if>
+            <if test="sERIALID != null">
+                SERIAL_ID = #{sERIALID},
+            </if>
+            <if test="sERIALID != null">
+                SERIAL_ID = #{sERIALID},
+            </if>
+            <if test="sERIALID != null">
+                SERIAL_ID = #{sERIALID},
+            </if>
+            <if test="sERIALID != null">
+                SERIAL_ID = #{sERIALID},
+            </if>
+            <if test="sERIALID != null">
+                SERIAL_ID = #{sERIALID},
+            </if>
+            <if test="sERIALID != null">
+                SERIAL_ID = #{sERIALID},
+            </if>
+            <if test="sERIALID != null">
+                SERIAL_ID = #{sERIALID},
+            </if>
+            <if test="sERIALID != null">
+                SERIAL_ID = #{sERIALID},
+            </if>
+            <if test="sERIALID != null">
+                SERIAL_ID = #{sERIALID},
+            </if>
+            <if test="sUCCESS != null">
+                SUCCESS = #{sUCCESS},
+            </if>
+            <if test="sUCCESS != null">
+                SUCCESS = #{sUCCESS},
+            </if>
+            <if test="sUCCESS != null">
+                SUCCESS = #{sUCCESS},
+            </if>
+            <if test="sUCCESS != null">
+                SUCCESS = #{sUCCESS},
+            </if>
+            <if test="sUCCESS != null">
+                SUCCESS = #{sUCCESS},
+            </if>
+            <if test="sUCCESS != null">
+                SUCCESS = #{sUCCESS},
+            </if>
+            <if test="sUCCESS != null">
+                SUCCESS = #{sUCCESS},
+            </if>
+            <if test="sUCCESS != null">
+                SUCCESS = #{sUCCESS},
+            </if>
+            <if test="sUCCESS != null">
+                SUCCESS = #{sUCCESS},
+            </if>
+            <if test="sUCCESS != null">
+                SUCCESS = #{sUCCESS},
+            </if>
+            <if test="sUCCESS != null">
+                SUCCESS = #{sUCCESS},
+            </if>
+            <if test="rEASONCODE != null">
+                REASON_CODE = #{rEASONCODE},
+            </if>
+            <if test="rEASONCODE != null">
+                REASON_CODE = #{rEASONCODE},
+            </if>
+            <if test="rEASONCODE != null">
+                REASON_CODE = #{rEASONCODE},
+            </if>
+            <if test="rEASONCODE != null">
+                REASON_CODE = #{rEASONCODE},
+            </if>
+            <if test="rEASONCODE != null">
+                REASON_CODE = #{rEASONCODE},
+            </if>
+            <if test="rEASONCODE != null">
+                REASON_CODE = #{rEASONCODE},
+            </if>
+            <if test="rEASONCODE != null">
+                REASON_CODE = #{rEASONCODE},
+            </if>
+            <if test="rEASONCODE != null">
+                REASON_CODE = #{rEASONCODE},
+            </if>
+            <if test="rEASONCODE != null">
+                REASON_CODE = #{rEASONCODE},
+            </if>
+            <if test="rEASONCODE != null">
+                REASON_CODE = #{rEASONCODE},
+            </if>
+            <if test="rEASONCODE != null">
+                REASON_CODE = #{rEASONCODE},
+            </if>
+            <if test="rEASONDESC != null">
+                REASON_DESC = #{rEASONDESC},
+            </if>
+            <if test="rEASONDESC != null">
+                REASON_DESC = #{rEASONDESC},
+            </if>
+            <if test="rEASONDESC != null">
+                REASON_DESC = #{rEASONDESC},
+            </if>
+            <if test="rEASONDESC != null">
+                REASON_DESC = #{rEASONDESC},
+            </if>
+            <if test="rEASONDESC != null">
+                REASON_DESC = #{rEASONDESC},
+            </if>
+            <if test="rEASONDESC != null">
+                REASON_DESC = #{rEASONDESC},
+            </if>
+            <if test="rEASONDESC != null">
+                REASON_DESC = #{rEASONDESC},
+            </if>
+            <if test="rEASONDESC != null">
+                REASON_DESC = #{rEASONDESC},
+            </if>
+            <if test="rEASONDESC != null">
+                REASON_DESC = #{rEASONDESC},
+            </if>
+            <if test="rEASONDESC != null">
+                REASON_DESC = #{rEASONDESC},
+            </if>
+            <if test="rEASONDESC != null">
+                REASON_DESC = #{rEASONDESC},
+            </if>
+            <if test="sCORE != null">
+                SCORE = #{sCORE},
+            </if>
+            <if test="sCORE != null">
+                SCORE = #{sCORE},
+            </if>
+            <if test="sCORE != null">
+                SCORE = #{sCORE},
+            </if>
+            <if test="sCORE != null">
+                SCORE = #{sCORE},
+            </if>
+            <if test="sCORE != null">
+                SCORE = #{sCORE},
+            </if>
+            <if test="sCORE != null">
+                SCORE = #{sCORE},
+            </if>
+            <if test="sCORE != null">
+                SCORE = #{sCORE},
+            </if>
+            <if test="sCORE != null">
+                SCORE = #{sCORE},
+            </if>
+            <if test="sCORE != null">
+                SCORE = #{sCORE},
+            </if>
+            <if test="sCORE != null">
+                SCORE = #{sCORE},
+            </if>
+            <if test="sCORE != null">
+                SCORE = #{sCORE},
+            </if>
+            <if test="dECISION != null">
+                DECISION = #{dECISION},
+            </if>
+            <if test="dECISION != null">
+                DECISION = #{dECISION},
+            </if>
+            <if test="dECISION != null">
+                DECISION = #{dECISION},
+            </if>
+            <if test="dECISION != null">
+                DECISION = #{dECISION},
+            </if>
+            <if test="dECISION != null">
+                DECISION = #{dECISION},
+            </if>
+            <if test="dECISION != null">
+                DECISION = #{dECISION},
+            </if>
+            <if test="dECISION != null">
+                DECISION = #{dECISION},
+            </if>
+            <if test="dECISION != null">
+                DECISION = #{dECISION},
+            </if>
+            <if test="dECISION != null">
+                DECISION = #{dECISION},
+            </if>
+            <if test="dECISION != null">
+                DECISION = #{dECISION},
+            </if>
+            <if test="dECISION != null">
+                DECISION = #{dECISION},
+            </if>
+            <if test="cREATETIME != null">
+                CREATE_TIME = #{cREATETIME},
+            </if>
+            <if test="cREATETIME != null">
+                CREATE_TIME = #{cREATETIME},
+            </if>
+            <if test="cREATETIME != null">
+                CREATE_TIME = #{cREATETIME},
+            </if>
+            <if test="cREATETIME != null">
+                CREATE_TIME = #{cREATETIME},
+            </if>
+            <if test="cREATETIME != null">
+                CREATE_TIME = #{cREATETIME},
+            </if>
+            <if test="cREATETIME != null">
+                CREATE_TIME = #{cREATETIME},
+            </if>
+            <if test="cREATETIME != null">
+                CREATE_TIME = #{cREATETIME},
+            </if>
+            <if test="cREATETIME != null">
+                CREATE_TIME = #{cREATETIME},
+            </if>
+            <if test="cREATETIME != null">
+                CREATE_TIME = #{cREATETIME},
+            </if>
+            <if test="cREATETIME != null">
+                CREATE_TIME = #{cREATETIME},
+            </if>
+            <if test="cREATETIME != null">
+                CREATE_TIME = #{cREATETIME},
+            </if>
+            <if test="eRRORINFO != null">
+                ERROR_INFO = #{eRRORINFO},
+            </if>
+            <if test="eRRORINFO != null">
+                ERROR_INFO = #{eRRORINFO},
+            </if>
+            <if test="eRRORINFO != null">
+                ERROR_INFO = #{eRRORINFO},
+            </if>
+            <if test="eRRORINFO != null">
+                ERROR_INFO = #{eRRORINFO},
+            </if>
+            <if test="eRRORINFO != null">
+                ERROR_INFO = #{eRRORINFO},
+            </if>
+            <if test="eRRORINFO != null">
+                ERROR_INFO = #{eRRORINFO},
+            </if>
+            <if test="eRRORINFO != null">
+                ERROR_INFO = #{eRRORINFO},
+            </if>
+            <if test="eRRORINFO != null">
+                ERROR_INFO = #{eRRORINFO},
+            </if>
+            <if test="eRRORINFO != null">
+                ERROR_INFO = #{eRRORINFO},
+            </if>
+            <if test="eRRORINFO != null">
+                ERROR_INFO = #{eRRORINFO},
+            </if>
+            <if test="eRRORINFO != null">
+                ERROR_INFO = #{eRRORINFO},
+            </if>
+            <if test="dATA != null">
+                DATA = #{dATA},
+            </if>
+            <if test="dATA != null">
+                DATA = #{dATA},
+            </if>
+            <if test="dATA != null">
+                DATA = #{dATA},
+            </if>
+            <if test="dATA != null">
+                DATA = #{dATA},
+            </if>
+            <if test="dATA != null">
+                DATA = #{dATA},
+            </if>
+            <if test="dATA != null">
+                DATA = #{dATA},
+            </if>
+            <if test="dATA != null">
+                DATA = #{dATA},
+            </if>
+            <if test="dATA != null">
+                DATA = #{dATA},
+            </if>
+            <if test="dATA != null">
+                DATA = #{dATA},
+            </if>
+            <if test="dATA != null">
+                DATA = #{dATA},
+            </if>
+            <if test="dATA != null">
+                DATA = #{dATA}
+            </if>
+        WHERE id = #{id}
+    </update>
+
+    <delete id="delete">
+        DELETE FROM TD_CREDIT_RESULT
+        WHERE id = #{id}
+    </delete>
+</mapper>

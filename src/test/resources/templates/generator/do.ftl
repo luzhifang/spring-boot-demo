@@ -23,11 +23,12 @@ public class ${doNameUpperCamel} {
         <#list columns as model>
     @ApiModelProperty(notes = "${model.columnComment!}")
     <#if (model.columnType = 'varchar' || model.columnType = 'text' || model.columnType = 'uniqueidentifier'
-        || model.columnType = 'varchar2' || model.columnType = 'nvarchar' )>
-    private String ${model.doField?uncap_first};
+        || model.columnType = 'varchar2' || model.columnType = 'nvarchar' ||model.columnType = 'VARCHAR2' ||model.columnType = 'VARCHAR'|| model.columnType = 'CLOB')>
+  private String ${model.doField?uncap_first};
 
     </#if>
-    <#if model.columnType = 'timestamp' || model.columnType = 'date' || model.columnType = 'datetime'>
+    <#if model.columnType = 'timestamp' || model.columnType = 'date' || model.columnType = 'datetime'||model.columnType = 'TIMESTAMP' || model.columnType = 'DATE' || model.columnType = 'DATETIME'>
+    
     private Date ${model.doField?uncap_first};
 
     </#if>
@@ -53,7 +54,8 @@ public class ${doNameUpperCamel} {
 <#if columns?exists>
 <#list columns as model>
 <#if (model.columnType = 'varchar' || model.columnType = 'text' || model.columnType = 'uniqueidentifier'
-    || model.columnType = 'varchar2' || model.columnType = 'nvarchar')>
+    || model.columnType = 'varchar2' || model.columnType = 'nvarchar'||model.columnType = 'VARCHAR2' ||model.columnType = 'VARCHAR'|| model.columnType = 'CLOB')>
+ 
     public String get${model.doField}() {
         return this.${model.doField?uncap_first};
     }
@@ -63,7 +65,9 @@ public class ${doNameUpperCamel} {
     }
 
 </#if>
-<#if model.columnType = 'timestamp' || model.columnType = 'date' || model.columnType = 'datetime'>
+<#if model.columnType = 'timestamp' || model.columnType = 'date' || model.columnType = 'datetime'||model.columnType = 'TIMESTAMP' || model.columnType = 'DATE' || model.columnType = 'DATETIME'>
+    
+    
     public Date get${model.doField}() {
         return this.${model.doField?uncap_first};
     }

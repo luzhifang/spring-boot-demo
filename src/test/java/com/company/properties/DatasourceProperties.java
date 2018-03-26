@@ -2,10 +2,6 @@ package com.company.properties;
 
 import org.springframework.boot.SpringBootConfiguration;
 import org.springframework.boot.context.properties.ConfigurationProperties;
-import org.springframework.stereotype.Component;
-
-import java.text.SimpleDateFormat;
-import java.util.Date;
 
 @SpringBootConfiguration
 @ConfigurationProperties(prefix = "spring.datasource")
@@ -30,7 +26,7 @@ public class DatasourceProperties {
         if(url.toLowerCase().indexOf("sqlserver") > -1){
             this.databaseType = "sqlserver";
         } else if(url.toLowerCase().indexOf("oracle") > -1){
-            this.databaseType = "oralce";
+            this.databaseType = "oracle";
         } else {
             this.databaseType = "mysql";
         }
